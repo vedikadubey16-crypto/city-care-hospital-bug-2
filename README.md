@@ -3,7 +3,7 @@
 A responsive hospital management website designed to simplify appointment booking and provide easy access to healthcare services.
 
 ### 🌐 Live Website
-[Visit City Care Hospital](https://city-hospital-new.vercel.app/)
+[Visit City Care Hospital](https://city-care-hospital-bug-2.vercel.app/)
 
 ### ✨ Features
 - Responsive and user-friendly interface
