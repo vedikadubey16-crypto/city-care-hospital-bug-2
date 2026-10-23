@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentistry - City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="department.css">
+    <style>
+        .dept-hero {
+            background: linear-gradient(135deg, #03034a 0%, #040493 50%, #0284c7 100%);
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .dept-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        .dept-hero-text h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .dept-hero-text p.tagline {
+            color: #93c5fd;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .dept-hero-text p.desc {
+            color: #e0f2fe;
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .dept-hero-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+        }
+        .dept-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.75rem;
+            margin-bottom: 4rem;
+        }
+        .service-detail-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .service-detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .service-detail-card .srv-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .service-detail-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .service-detail-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            gap: 2rem;
+        }
+        .doc-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .doc-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .doc-card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            margin-bottom: 1.25rem;
+        }
+        .doc-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-spec {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-exp {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 1.25rem;
+        }
+        .doc-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(4, 4, 147, 0.25);
+            color: #ffffff;
+        }
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            background: var(--surface-alt);
+            color: var(--secondary);
+        }
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            line-height: 1.6;
+            border-top: 1px solid var(--border-color);
+            display: none;
+            background: var(--surface-alt);
+        }
+        .dept-cta-banner {
+            background: linear-gradient(135deg, #03034a 0%, #040493 100%);
+            color: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .dept-cta-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .dept-cta-text p {
+            color: #bfdbfe;
+            font-size: 1rem;
+        }
+        @media (max-width: 992px) {
+            .services-detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .dept-hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .services-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            .dept-cta-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link active">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <section class="dept-hero">
+        <div class="dept-hero-inner">
+            <div class="dept-hero-text">
+                <h1>DENTISTRY</h1>
+                <p class="tagline">Comprehensive Oral Health, Restorative Care & Smile Design</p>
+                <p class="desc">The Dentistry Department at City Care Hospital offers gentle, advanced dental procedures using digital imaging, rotary endodontics, and comfortable aesthetic dentistry.</p>
+            </div>
+            <img src="dentistry.png" alt="Dentistry" class="dept-hero-img">
+        </div>
+    </section>
+
+    <main class="dept-section">
+        <!-- Facilities Section with Staggered Scroll Animation (Section 2.4) -->
+        <div class="section-header">
+            <span class="section-tag">DENTAL SERVICES</span>
+            <h2>Our Dentistry Facilities</h2>
+            <p>From routine prophylaxis to complex endodontic restorations</p>
+        </div>
+
+        <div class="services-detail-grid">
+            <div class="service-detail-card anim-scroll-card" data-index="0">
+                <span class="srv-icon">🦷</span>
+                <h3>Dental Check-up</h3>
+                <p>Comprehensive oral examination, digital intraoral imaging, and caries risk assessment.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="1">
+                <span class="srv-icon">✨</span>
+                <h3>Teeth Cleaning</h3>
+                <p>Ultrasonic scaling, plaque removal, polishing, and periodontal gum care.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="2">
+                <span class="srv-icon">🔬</span>
+                <h3>Root Canal Treatment</h3>
+                <p>Painless, microscopic root canal therapy to preserve natural teeth and eliminate infection.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="3">
+                <span class="srv-icon">💎</span>
+                <h3>Dental Restoration</h3>
+                <p>Tooth-colored composite fillings, porcelain crowns, veneers, and restorative bridges.</p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">DENTAL SURGEONS</span>
+            <h2>Our Dental Specialists</h2>
+            <p>Experienced dental surgeons committed to gentle, pain-free dental care</p>
+        </div>
+
+        <div class="doctors-grid">
+            <div class="doc-card anim-scroll-card" data-index="0">
+                <img src="doctord1.jpg" alt="Dr. Pooja Rao">
+                <h3>Dr. Pooja Rao</h3>
+                <p class="doc-spec">Consultant Endodontist</p>
+                <p class="doc-exp">MDS (Conservative Dentistry) • 11+ Years Experience</p>
+                <a href="booking.html?department=Dentistry" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+            <div class="doc-card anim-scroll-card" data-index="1">
+                <img src="doctord2.jpg" alt="Dr. Vikram Malhotra">
+                <h3>Dr. Vikram Malhotra</h3>
+                <p class="doc-spec">Dental Surgeon & Implantologist</p>
+                <p class="doc-exp">BDS, Fellowship in Implantology • 14+ Years Experience</p>
+                <a href="booking.html?department=Dentistry" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">PATIENT FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Common questions about dental checkups and treatments</p>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How frequently should I schedule a dental cleaning?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Dentists generally recommend a professional dental checkup and ultrasonic cleaning once every six months to prevent calculus buildup and early gum inflammation.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is root canal therapy painful?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Modern root canal procedures are performed under effective local anesthesia and are virtually painless, relieving the acute toothache caused by pulp infection.
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-cta-banner">
+            <div class="dept-cta-text">
+                <h3>Preserve Your Healthy, Confident Smile</h3>
+                <p>Schedule your dental check-up or cleaning with our dental specialists today.</p>
+            </div>
+            <a href="booking.html?department=Dentistry" class="btn btn-primary btn-pill" style="background: #ffffff; color: var(--primary);">
+                Book Dental Appointment &rarr;
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollCards = document.querySelectorAll(".anim-scroll-card");
+        if ("IntersectionObserver" in window) {
+            const cardObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const index = parseInt(card.getAttribute("data-index") || "0", 10);
+                        setTimeout(function() {
+                            card.classList.add("in-view");
+                        }, index * 180);
+                        observer.unobserve(card);
+                    }
+                });
+            }, { threshold: 0.15 });
+            scrollCards.forEach(c => cardObserver.observe(c));
+        } else {
+            scrollCards.forEach(c => c.classList.add("in-view"));
+        }
+    });
+
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const arrow = element.querySelector("span:last-child");
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            if (arrow) arrow.textContent = "▼";
+        } else {
+            answer.style.display = "block";
+            if (arrow) arrow.textContent = "▲";
+        }
+    }
+    </script>
+</body>
+</html>

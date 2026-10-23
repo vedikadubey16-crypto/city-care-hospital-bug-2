@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Care Hospital | Your Health, Our Priority</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- Unified Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link active">Home</a>
+                <a href="department.html" class="nav-link">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Hospital Image and Animated Heading -->
+    <section id="block">
+        <div class="hero-wrapper">
+            <div class="text">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span> NABH Accredited Healthcare Excellence
+                </div>
+                <h1 id="maintext">YOUR HEALTH, <br><span class="gradient-text animated-hero-title">OUR PRIORITY</span></h1>
+                <p id="extra">Providing comprehensive tertiary healthcare services with internationally experienced physicians, modern robotic diagnostic technology, and compassionate 24/7 emergency patient care.</p>
+
+                <div class="hero-actions">
+                    <a href="booking.html" class="btn btn-primary btn-pill hero-cta">
+                        📅 Book Appointment &rarr;
+                    </a>
+                    <a href="#departments-section" class="btn btn-secondary btn-pill hero-cta">
+                        🏥 Explore Departments
+                    </a>
+                    <a href="tel:123456789" id="bbutton">
+                        Emergency? ☎ 123-456-789
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <div class="doctor-badge-floating">
+                    <span class="star-rating">★★★★★</span>
+                    <strong>Top Rated Hospital</strong>
+                    <small>Accredited Patient Safety</small>
+                </div>
+                <img src="Doctor.png" alt="City Care Hospital Doctor" class="image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Animated Statistics Bar -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card" data-target="50" data-suffix="+">
+                <span class="stat-icon">👨‍⚕️</span>
+                <h3 class="stat-number"><span class="counter">0</span>+</h3>
+                <p class="stat-label">Specialist Doctors</p>
+            </div>
+            <div class="stat-card" data-target="25000" data-suffix="+">
+                <span class="stat-icon">❤️</span>
+                <h3 class="stat-number"><span class="counter">0</span>+</h3>
+                <p class="stat-label">Happy Patients</p>
+            </div>
+            <div class="stat-card" data-target="24" data-suffix="/7">
+                <span class="stat-icon">🚑</span>
+                <h3 class="stat-number">24/7</h3>
+                <p class="stat-label">Emergency Care</p>
+            </div>
+            <div class="stat-card" data-target="99" data-suffix="%">
+                <span class="stat-icon">⭐</span>
+                <h3 class="stat-number"><span class="counter">0</span>%</h3>
+                <p class="stat-label">Patient Recovery Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll-Based Animated Departments Section (Section 2.3) -->
+    <section id="departments-section">
+        <div class="section-header-block">
+            <span class="section-tag">MEDICAL SPECIALTIES</span>
+            <div id="hdepartment">
+                <h1>OUR DEPARTMENTS</h1>
+            </div>
+            <div id="motive">Comprehensive, specialized healthcare designed for every member of your family</div>
+        </div>
+
+        <div class="dep-grid-container" id="departmentsGrid">
+            <!-- Cardiology -->
+            <div class="department-card anim-scroll-card" id="cardiology" data-index="0">
+                <div class="card-image-wrap">
+                    <img src="cardiology.png" id="cardioimage" alt="Cardiology">
+                </div>
+                <h3 id="headingdep" class="headingdep">CARDIOLOGY</h3>
+                <p id="motodep" class="motodep">Advanced cardiac diagnosis, ECG screening, echocardiography, and complete heart wellness.</p>
+                <a href="cardiology.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Dentistry -->
+            <div class="department-card anim-scroll-card" id="dentistry" data-index="1">
+                <div class="card-image-wrap">
+                    <img src="dentistry.png" id="dentistryimage" alt="Dentistry">
+                </div>
+                <h3 id="headingdep" class="headingdep">DENTISTRY</h3>
+                <p id="motodep" class="motodep">Preventive oral healthcare, teeth cleaning, root canal treatments, and aesthetic dental care.</p>
+                <a href="dentisitry.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+
+            <!-- General Medicine -->
+            <div class="department-card anim-scroll-card" id="medicine" data-index="2">
+                <div class="card-image-wrap">
+                    <img src="medicine.png" id="medicineimage" alt="General Medicine">
+                </div>
+                <h3 id="headingdep" class="headingdep">GENERAL MEDICINE</h3>
+                <p id="motodep" class="motodep">Routine health check-ups, chronic infection management, fever care, and preventative medicine.</p>
+                <a href="general medicine.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Pediatrics -->
+            <div class="department-card anim-scroll-card" id="pediatrics" data-index="3">
+                <div class="card-image-wrap">
+                    <img src="pediatrics.png" id="pediatricsimage" alt="Pediatrics">
+                </div>
+                <h3 id="headingdep" class="headingdep">PEDIATRICS</h3>
+                <p id="motodep" class="motodep">Compassionate healthcare for infants, toddlers, and children including routine vaccination.</p>
+                <a href="pediatrics.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Orthopedics -->
+            <div class="department-card anim-scroll-card" id="orthopedics" data-index="4">
+                <div class="card-image-wrap">
+                    <img src="orthopedics.png" id="orthopedicsimage" alt="Orthopedics">
+                </div>
+                <h3 id="headingdep" class="headingdep">ORTHOPEDICS</h3>
+                <p id="motodep" class="motodep">Comprehensive bone & joint care, sports injury rehabilitation, fracture care, and arthritis relief.</p>
+                <a href="orthopedic.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Pulmonology -->
+            <div class="department-card anim-scroll-card" id="pulmunology" data-index="5">
+                <div class="card-image-wrap">
+                    <img src="pulmunology.png" id="pulmunologyimage" alt="Pulmonology">
+                </div>
+                <h3 id="headingdep" class="headingdep">PULMONOLOGY</h3>
+                <p id="motodep" class="motodep">Specialized respiratory check-ups, asthma management, allergy care, and pulmonary wellness.</p>
+                <a href="pulmonology.html" id="linkdep" class="linkdep">
+                    <span>View Details &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Facilities Highlights Section (Section 2.2 #5 & 2.4) -->
+    <section class="facilities-preview-section">
+        <div class="section-header-block">
+            <span class="section-tag">ADVANCED CARE</span>
+            <h2>INTERACTIVE CLINICAL FACILITIES</h2>
+            <p>State-of-the-art diagnostic and clinical infrastructure available across our specialties</p>
+        </div>
+
+        <div class="facilities-grid">
+            <div class="facility-preview-card anim-scroll-card" data-index="0">
+                <span class="facility-icon">🔬</span>
+                <h3>Advanced Diagnostics</h3>
+                <p>Digital pathology, CT scan, echocardiography, and molecular diagnostics with automated rapid results.</p>
+            </div>
+            <div class="facility-preview-card anim-scroll-card" data-index="1">
+                <span class="facility-icon">🏥</span>
+                <h3>Modular Operation Suites</h3>
+                <p>Laminar air-flow surgical theaters equipped with HD endoscopic towers and advanced anesthesia delivery.</p>
+            </div>
+            <div class="facility-preview-card anim-scroll-card" data-index="2">
+                <span class="facility-icon">🚑</span>
+                <h3>Intensive Critical Care</h3>
+                <p>Multi-bed ICU and CCU with invasive hemodynamics, dedicated ventilators, and round-the-clock intensivist coverage.</p>
+            </div>
+            <div class="facility-preview-card anim-scroll-card" data-index="3">
+                <span class="facility-icon">💊</span>
+                <h3>24/7 In-House Pharmacy</h3>
+                <p>Fully stocked inpatient and outpatient pharmacy providing genuine temperature-monitored medications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Doctor Profiles Section (Section 2.2 #6) -->
+    <section class="doctors-preview-section">
+        <div class="section-header-block">
+            <span class="section-tag">MEDICAL EXPERTS</span>
+            <h2>FEATURED SENIOR SPECIALISTS</h2>
+            <p>Consult with our board-certified clinical leads across key healthcare disciplines</p>
+        </div>
+
+        <div class="doctors-preview-grid">
+            <div class="doc-preview-card anim-scroll-card" data-index="0">
+                <img src="doctor1.jpg" alt="Dr. Ananya Sharma">
+                <h4>Dr. Ananya Sharma</h4>
+                <span class="doc-badge">Cardiologist</span>
+                <p>MD (Cardiology) • 12+ Yrs Exp</p>
+                <a href="booking.html?department=Cardiology" class="doc-cta">Book Consultation &rarr;</a>
+            </div>
+            <div class="doc-preview-card anim-scroll-card" data-index="1">
+                <img src="doctoro2.jpg" alt="Dr. Rajesh Nair">
+                <h4>Dr. Rajesh Nair</h4>
+                <span class="doc-badge">Orthopedic Surgeon</span>
+                <p>MS (Ortho), MCh • 17+ Yrs Exp</p>
+                <a href="booking.html?department=Orthopedics" class="doc-cta">Book Consultation &rarr;</a>
+            </div>
+            <div class="doc-preview-card anim-scroll-card" data-index="2">
+                <img src="doctorp1.jpg" alt="Dr. Sneha Patil">
+                <h4>Dr. Sneha Patil</h4>
+                <span class="doc-badge">Pediatrician</span>
+                <p>MD (Pediatrics) • 14+ Yrs Exp</p>
+                <a href="booking.html?department=Pediatrics" class="doc-cta">Book Consultation &rarr;</a>
+            </div>
+            <div class="doc-preview-card anim-scroll-card" data-index="3">
+                <img src="doctorpu1.jpg" alt="Dr. Suresh Kumar">
+                <h4>Dr. Suresh Kumar</h4>
+                <span class="doc-badge">Pulmonologist</span>
+                <p>MD (Pulmonary), FCCP • 15+ Yrs Exp</p>
+                <a href="booking.html?department=Pulmonology" class="doc-cta">Book Consultation &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Care Highlights (Section 2.2 #8) -->
+    <section class="care-highlights-section">
+        <div class="care-highlights-wrapper">
+            <div class="care-text">
+                <span class="section-tag">PATIENT-FIRST PHILOSOPHY</span>
+                <h2>Dedicated to Every Step of Your Recovery</h2>
+                <p>At City Care Hospital, our holistic care philosophy ensures you experience seamless consultations, respectful communication, rapid discharge protocols, and dedicated post-care follow-ups.</p>
+                <div class="care-checklist">
+                    <div class="check-item"><span>✅</span> Zero-delay emergency triage</div>
+                    <div class="check-item"><span>✅</span> Dedicated patient care coordinators</div>
+                    <div class="check-item"><span>✅</span> Transparent digital appointment booking</div>
+                    <div class="check-item"><span>✅</span> Strict hospital hygiene and infection control</div>
+                </div>
+            </div>
+            <div class="care-image-wrap">
+                <img src="care.png" alt="Patient Centric Care" class="care-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Interactive Action Strips (Section 2.2 #9) -->
+    <section class="cta-strips-wrapper">
+        <div id="book" class="action-strip">
+            <div class="strip-info">
+                <img src="calendar.png" id="calender" alt="Appointment Calendar">
+                <div id="matter">
+                    <div id="hbook">Book Your Appointment</div>
+                    <div id="cbook">Schedule your visit with our specialist doctors at your convenience</div>
+                </div>
+            </div>
+            <a href="booking.html" id="bookingbutton" class="btn btn-primary">
+                <span id="textbutton">BOOK NOW &rarr;</span>
+            </a>
+        </div>
+
+        <div id="appointment" class="action-strip">
+            <div class="strip-info">
+                <img src="calendar.png" id="acalender" alt="View Appointments">
+                <div id="amatter">
+                    <div id="happointment">View Confirmed Appointments</div>
+                    <div id="cappointment">Access the details and schedule of your confirmed patient visits</div>
+                </div>
+            </div>
+            <a href="appointments.html" id="appointmentbutton" class="btn btn-secondary">
+                <span id="atextbutton">VIEW APPOINTMENTS</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Why Choose City Care Hospital Section (Section 2.2 #7) -->
+    <section id="importance">
+        <div id="mimp">
+            <div class="section-tag" style="display: table; margin: 0 auto 0.5rem;">OUR STRENGTHS</div>
+            <h2 id="himp">Why Choose City Care Hospital?</h2>
+            <p class="importance-subtitle">Trusted by thousands of families for clinical rigor, empathetic care, and cutting-edge facilities</p>
+            <div id="benefits">
+                <div id="expdoct" class="benefit-card anim-scroll-card" data-index="0">
+                    <div class="benefit-img-wrap">
+                        <img src="expdoc.png" id="expdocimg" alt="Expert Doctors">
+                    </div>
+                    <div id="bimp">Expert Doctors</div>
+                    <div id="simp">Board-certified specialists with decades of clinical experience and compassion.</div>
+                </div>
+                <div id="quickserv" class="benefit-card anim-scroll-card" data-index="1">
+                    <div class="benefit-img-wrap">
+                        <img src="quickserv.png" id="quickservimg" alt="Quick Service">
+                    </div>
+                    <div id="bimp">Quick Service</div>
+                    <div id="simp">Minimal waiting times, expedited consultations, and swift lab diagnostics.</div>
+                </div>
+                <div id="advfac" class="benefit-card anim-scroll-card" data-index="2">
+                    <div class="benefit-img-wrap">
+                        <img src="advfac.png" id="advfacimg" alt="Advanced Facilities">
+                    </div>
+                    <div id="bimp">Advanced Facilities</div>
+                    <div id="simp">Modern operation theaters, advanced imaging, and fully equipped ICU units.</div>
+                </div>
+                <div id="care" class="benefit-card anim-scroll-card" data-index="3">
+                    <div class="benefit-img-wrap">
+                        <img src="care.png" id="careimg" alt="Patient Centric Care">
+                    </div>
+                    <div id="bimp">Patient-Centric Care</div>
+                    <div id="simp">Your comfort, safety, dignity, and recovery are at the core of all we do.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Footer with BUG-03 -->
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456798" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation & Interactive Counter JavaScript -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Scroll-Based Department & Facility Animations via Intersection Observer
+        // Staggered delays: 180ms per index
+        const scrollCards = document.querySelectorAll(".anim-scroll-card");
+
+        if ("IntersectionObserver" in window) {
+            const cardObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const index = parseInt(card.getAttribute("data-index") || "0", 10);
+                        setTimeout(function() {
+                            card.classList.add("in-view");
+                        }, index * 180);
+                        observer.unobserve(card);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: "0px 0px -50px 0px",
+                threshold: 0.15
+            });
+
+            scrollCards.forEach(function(card) {
+                cardObserver.observe(card);
+            });
+        } else {
+            scrollCards.forEach(function(card) {
+                card.classList.add("in-view");
+            });
+        }
+
+        // 2. Animated Number Counters
+        const counterElements = document.querySelectorAll(".counter");
+        let countersAnimated = false;
+
+        function animateCounters() {
+            counterElements.forEach(function(counter) {
+                const parent = counter.closest(".stat-card");
+                const target = parseInt(parent.getAttribute("data-target") || "0", 10);
+                const duration = 1600;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - (1 - progress) * (1 - progress);
+                    const currentVal = Math.floor(easeOut * target);
+
+                    counter.textContent = currentVal.toLocaleString();
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                }
+
+                requestAnimationFrame(update);
+            });
+        }
+
+        const statsSection = document.querySelector(".stats-section");
+        if (statsSection && "IntersectionObserver" in window) {
+            const statsObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            statsObserver.observe(statsSection);
+        } else {
+            animateCounters();
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Appointments | City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+
+    <style>
+        .appointments-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8fbfe;
+        }
+
+        #content {
+            width: 100%;
+            max-width: 1240px;
+            margin: 3rem auto 5rem;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .table-container {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 2.75rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .table-container:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .table-header-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .table-heading {
+            color: var(--primary-dark);
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .status-badge {
+            background-color: #ecfdf5;
+            color: #059669;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid #a7f3d0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            min-width: 860px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            padding: 1.1rem 1.25rem;
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1.2rem 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+
+        tbody tr:nth-child(even) td {
+            background-color: #fbfdff;
+        }
+
+        tbody tr:hover td {
+            background-color: #f0f7fc;
+        }
+
+        .department-cell {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        #message {
+            margin-top: 1.75rem;
+            font-size: 0.98rem;
+            color: var(--secondary);
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-size: 0.98rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-action.primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(4, 4, 147, 0.25);
+        }
+
+        .btn-action.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(4, 4, 147, 0.35);
+        }
+
+        .btn-action.secondary {
+            background-color: #ffffff;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+
+        .btn-action.secondary:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            #content {
+                padding: 0 1rem;
+                margin: 2rem auto 3.5rem;
+            }
+
+            .table-container {
+                padding: 1.75rem 1.25rem;
+            }
+
+            .table-heading {
+                font-size: 1.3rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .btn-action {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="appointments-page">
+    <!-- Unified Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link active">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <div id="navbar2" class="page-banner">
+        <b>YOUR CONFIRMED APPOINTMENTS</b>
+        <span class="info">View the verified schedule and booking details of your upcoming consultation</span>
+    </div>
+
+    <!-- Main Content: Appointment Table -->
+    <main id="content">
+        <div class="table-container">
+            <div class="table-header-block">
+                <h2 class="table-heading">
+                    📋 Scheduled Consultation Details
+                </h2>
+                <span class="status-badge">● Active Confirmed Booking</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Date of Birth</th>
+                            <th>Contact Phone</th>
+                            <th>Email Address</th>
+                            <th>Department</th>
+                            <th>Appointment Date</th>
+                            <th>Scheduled Time</th>
+                            <th>Reason for Visit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsBody">
+                        <!-- Populated dynamically via loadAppointments() -->
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="message"></p>
+
+            <div class="button-container">
+                <a href="booking.html" class="btn-action primary">
+                    ➕ Book Another Appointment
+                </a>
+                <a href="main.html" class="btn-action secondary">
+                    🏠 Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    function loadAppointments() {
+        const tableBody = document.getElementById("appointmentsBody");
+        const message = document.getElementById("message");
+
+        tableBody.replaceChildren();
+
+        let appointment;
+        try {
+            appointment = JSON.parse(localStorage.getItem("myAppointment"));
+        } catch (error) {
+            console.error("Unable to read appointment:", error);
+            message.textContent = "Unable to load your appointment details.";
+            return;
+        }
+
+        if (!appointment) {
+            message.textContent = "No appointment found in this browser. Please book an appointment first.";
+            const emptyRow = document.createElement("tr");
+            const emptyCell = document.createElement("td");
+            emptyCell.colSpan = 8;
+            emptyCell.style.textAlign = "center";
+            emptyCell.style.padding = "3rem 1.5rem";
+            emptyCell.style.color = "#64748b";
+            emptyCell.innerHTML = "<strong>No booked appointments found.</strong><br><small style='color: #94a3b8; font-size: 0.9rem;'>Schedule your consultation using the Book Appointment button above.</small>";
+            emptyRow.appendChild(emptyCell);
+            tableBody.appendChild(emptyRow);
+            return;
+        }
+
+        const fields = [
+            "full_name",
+            "date_of_birth",
+            "phone",
+            "email",
+            "department",
+            "preferred_date",
+            "preferred_time",
+            "reason"
+        ];
+
+        const row = document.createElement("tr");
+
+        fields.forEach(function(field) {
+            const cell = document.createElement("td");
+            if (field === "department") {
+                cell.className = "department-cell";
+                cell.innerHTML = `<strong>${appointment[field] ?? "-"}</strong>`;
+            } else {
+                cell.textContent = appointment[field] ?? "-";
+            }
+            row.appendChild(cell);
+        });
+
+        tableBody.appendChild(row);
+
+        const appointmentIdText = appointment.id ? ` (Appointment ID: #${appointment.id})` : "";
+        message.innerHTML = `✅ Your appointment has been confirmed successfully!${appointmentIdText}`;
+    }
+
+    loadAppointments();
+    </script>
+</body>
+</html>

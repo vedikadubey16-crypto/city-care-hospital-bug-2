@@ -1,0 +1,554 @@
+/* ==========================================================================
+   CITY CARE HOSPITAL - UNIFIED MODERN DESIGN SYSTEM (common.css)
+   Colors: Royal Navy (#03034a), Classic Medical Blue (#040493),
+           Electric Blue (#0284c7), Light Cyan / Ice Blue (#90cfef, #e0f2fe, #f0f7fc),
+           Pure White (#ffffff), Emergency Accent (#dc2626)
+   ========================================================================== */
+
+:root {
+    --primary-dark: #03034a;
+    --primary: #040493;
+    --primary-light: #1e3a8a;
+    --primary-hover: #020270;
+    --secondary: #0284c7;
+    --secondary-light: #e0f2fe;
+    --secondary-hover: #0369a1;
+    --accent-blue: #90cfef;
+    --accent-cyan: #38bdf8;
+    --accent-tint: #f0f7fc;
+    --emergency: #dc2626;
+    --emergency-hover: #b91c1c;
+    --emergency-bg: #fee2e2;
+    --text-dark: #0a192f;
+    --text-muted: #475569;
+    --text-light: #ffffff;
+    --border-color: #dbeafe;
+    --border-focus: #2563eb;
+    --surface: #ffffff;
+    --surface-alt: #f8fbfe;
+    --surface-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7fc 100%);
+    --shadow-sm: 0 2px 8px rgba(3, 3, 74, 0.06);
+    --shadow-md: 0 8px 24px rgba(3, 3, 74, 0.08);
+    --shadow-lg: 0 16px 36px rgba(3, 3, 74, 0.12);
+    --shadow-hover: 0 20px 40px rgba(2, 132, 199, 0.18);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-pill: 9999px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    background-color: #f8fbfe;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+/* Keyframes for animations */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+    }
+}
+
+@keyframes floatGentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   SCROLL-BASED REVEAL ANIMATION SYSTEM (.anim-scroll-card)
+   Used for Departments and Facilities with Staggered Delays
+   ========================================================================== */
+
+.anim-scroll-card {
+    opacity: 0;
+    transform: translateY(45px) scale(0.97);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.anim-scroll-card.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   UNIFIED NAVBAR
+   ========================================================================== */
+
+header {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.navbar {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0.9rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.navbar .logo-container,
+.navbar a.start:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.navbar .logo,
+.logo {
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.navbar .logo .badge-symbol,
+.logo .badge-symbol {
+    color: #ef4444;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3));
+}
+
+.navbar .logo:hover {
+    color: var(--secondary);
+    transform: scale(1.02);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navbar a.start:not(:first-child),
+.nav-link {
+    color: var(--primary-dark);
+    font-size: 0.96rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 0.25rem;
+    position: relative;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.navbar a.start:not(:first-child)::after,
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    border-radius: var(--radius-pill);
+    transition: width 0.25s ease;
+}
+
+.navbar a.start:not(:first-child):hover,
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary);
+}
+
+.navbar a.start:not(:first-child):hover::after,
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Emergency Hotline Button */
+.navbar button,
+.navbar .emergency-btn,
+.emergency-button {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: #ffffff !important;
+    border: none;
+    padding: 0.65rem 1.35rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+    transition: var(--transition);
+    text-decoration: none;
+    flex-shrink: 0;
+    animation: pulseGlow 3s infinite;
+}
+
+.navbar button:hover,
+.navbar .emergency-btn:hover,
+.emergency-button:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.45);
+}
+
+/* ==========================================================================
+   PAGE BANNER (#navbar2 / .page-banner)
+   ========================================================================== */
+
+#navbar2,
+.page-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #03034a 0%, #040493 50%, #0284c7 100%);
+    color: #ffffff;
+    padding: 3.25rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+#navbar2::before,
+.page-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(144, 207, 239, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+#navbar2 b,
+.page-banner h1,
+.page-banner .banner-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+#navbar2 .info,
+.page-banner .info,
+.page-banner .banner-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    color: #e0f2fe;
+    font-weight: 400;
+    display: block;
+    max-width: 680px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   UNIFIED FOOTER
+   ========================================================================== */
+
+footer {
+    width: 100%;
+    background: linear-gradient(180deg, #03034a 0%, #02022e 100%);
+    color: #ffffff;
+    margin-top: auto;
+    padding: 3.5rem 1.5rem 1.75rem;
+    border-top: 4px solid var(--secondary);
+    position: relative;
+}
+
+.last,
+.footer-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.footertop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.slogan {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.endlogo {
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.eend {
+    color: #93c5fd;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.end {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.end:hover {
+    color: #38bdf8;
+    transform: translateY(-1px);
+}
+
+.footer-emergency {
+    color: #fca5a5;
+    font-weight: 700;
+    background: rgba(239, 68, 68, 0.15);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.footer-emergency:hover {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.35);
+}
+
+.copyright {
+    color: #94a3b8;
+    font-size: 0.88rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+/* ==========================================================================
+   BUTTONS & COMMON UI COMPONENTS
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.85rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.98rem;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(4, 4, 147, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(4, 4, 147, 0.35);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-light);
+    color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-pill {
+    border-radius: var(--radius-pill);
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: #e0f2fe;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.75rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0.85rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem 1rem;
+        gap: 0.9rem;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 1.5rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+
+    .navbar button,
+    .navbar .emergency-btn,
+    .emergency-button {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 0.7rem 1.2rem;
+    }
+
+    .footertop {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .anim-scroll-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

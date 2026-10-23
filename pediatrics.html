@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatrics - City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="department.css">
+    <style>
+        .dept-hero {
+            background: linear-gradient(135deg, #03034a 0%, #040493 50%, #0284c7 100%);
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .dept-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        .dept-hero-text h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .dept-hero-text p.tagline {
+            color: #93c5fd;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .dept-hero-text p.desc {
+            color: #e0f2fe;
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .dept-hero-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+        }
+        .dept-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.75rem;
+            margin-bottom: 4rem;
+        }
+        .service-detail-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .service-detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .service-detail-card .srv-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .service-detail-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .service-detail-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            gap: 2rem;
+        }
+        .doc-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .doc-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .doc-card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            margin-bottom: 1.25rem;
+        }
+        .doc-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-spec {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-exp {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 1.25rem;
+        }
+        .doc-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(4, 4, 147, 0.25);
+            color: #ffffff;
+        }
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            background: var(--surface-alt);
+            color: var(--secondary);
+        }
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            line-height: 1.6;
+            border-top: 1px solid var(--border-color);
+            display: none;
+            background: var(--surface-alt);
+        }
+        .dept-cta-banner {
+            background: linear-gradient(135deg, #03034a 0%, #040493 100%);
+            color: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .dept-cta-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .dept-cta-text p {
+            color: #bfdbfe;
+            font-size: 1rem;
+        }
+        @media (max-width: 992px) {
+            .services-detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .dept-hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .services-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            .dept-cta-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link active">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <section class="dept-hero">
+        <div class="dept-hero-inner">
+            <div class="dept-hero-text">
+                <h1>PEDIATRICS</h1>
+                <p class="tagline">Gentle, Compassionate Child Healthcare & Growth Tracking</p>
+                <p class="desc">The Pediatrics Department at City Care Hospital is dedicated to the well-being of infants, young children, and adolescents, providing child-friendly clinics and expert developmental support.</p>
+            </div>
+            <img src="pediatrics.png" alt="Pediatrics" class="dept-hero-img">
+        </div>
+    </section>
+
+    <main class="dept-section">
+        <!-- Facilities Section with Staggered Scroll Animation (Section 2.4) -->
+        <div class="section-header">
+            <span class="section-tag">PEDIATRIC SERVICES</span>
+            <h2>Our Pediatrics Facilities</h2>
+            <p>Comprehensive healthcare tailored specially for young growing patients</p>
+        </div>
+
+        <div class="services-detail-grid">
+            <div class="service-detail-card anim-scroll-card" data-index="0">
+                <span class="srv-icon">👶</span>
+                <h3>Child Health Check-up</h3>
+                <p>Routine developmental milestones tracking, pediatric physicals, and vital health screenings.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="1">
+                <span class="srv-icon">💉</span>
+                <h3>Vaccination</h3>
+                <p>Comprehensive national and international pediatric immunization schedules in a child-friendly setting.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="2">
+                <span class="srv-icon">🍎</span>
+                <h3>Child Nutrition</h3>
+                <p>Expert pediatric dietary guidance, infant weaning support, growth assessment, and allergy plans.</p>
+            </div>
+            <div class="service-detail-card anim-scroll-card" data-index="3">
+                <span class="srv-icon">🧸</span>
+                <h3>Child Illness Treatment</h3>
+                <p>Gentle care for childhood infections, respiratory issues, colic, fevers, and pediatric ear infections.</p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">PEDIATRICIANS</span>
+            <h2>Our Pediatrics Specialists</h2>
+            <p>Experienced pediatric consultants passionate about your child's well-being</p>
+        </div>
+
+        <div class="doctors-grid">
+            <div class="doc-card anim-scroll-card" data-index="0">
+                <img src="doctorp1.jpg" alt="Dr. Sneha Patil">
+                <h3>Dr. Sneha Patil</h3>
+                <p class="doc-spec">Senior Consultant Pediatrician</p>
+                <p class="doc-exp">MD (Pediatrics), DCH • 14+ Years Experience</p>
+                <a href="booking.html?department=Pediatrics" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+            <div class="doc-card anim-scroll-card" data-index="1">
+                <img src="doctorp2.jpg" alt="Dr. Rohan Gupta">
+                <h3>Dr. Rohan Gupta</h3>
+                <p class="doc-spec">Pediatric Critical Care Specialist</p>
+                <p class="doc-exp">DNB (Pediatrics), FIAP • 11+ Years Experience</p>
+                <a href="booking.html?department=Pediatrics" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">PATIENT FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Common questions from parents about pediatric care and immunizations</p>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What age group is treated in the Pediatrics Department?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Our department provides specialized care for newborns, infants, children, and teenagers up to 18 years of age.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I consult about my child's growth and immunization record?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. Please bring your child's immunization card or previous records so our pediatricians can review their developmental timeline and administer any catch-up doses.
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-cta-banner">
+            <div class="dept-cta-text">
+                <h3>Your Child's Health Is in Caring Hands</h3>
+                <p>Book a consultation with our experienced pediatricians today.</p>
+            </div>
+            <a href="booking.html?department=Pediatrics" class="btn btn-primary btn-pill" style="background: #ffffff; color: var(--primary);">
+                Book Pediatric Appointment &rarr;
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollCards = document.querySelectorAll(".anim-scroll-card");
+        if ("IntersectionObserver" in window) {
+            const cardObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const index = parseInt(card.getAttribute("data-index") || "0", 10);
+                        setTimeout(function() {
+                            card.classList.add("in-view");
+                        }, index * 180);
+                        observer.unobserve(card);
+                    }
+                });
+            }, { threshold: 0.15 });
+            scrollCards.forEach(c => cardObserver.observe(c));
+        } else {
+            scrollCards.forEach(c => c.classList.add("in-view"));
+        }
+    });
+
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const arrow = element.querySelector("span:last-child");
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            if (arrow) arrow.textContent = "▼";
+        } else {
+            answer.style.display = "block";
+            if (arrow) arrow.textContent = "▲";
+        }
+    }
+    </script>
+</body>
+</html>

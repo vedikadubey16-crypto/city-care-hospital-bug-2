@@ -1,0 +1,202 @@
+/* ==========================================================================
+   CITY CARE HOSPITAL - APPOINTMENT BOOKING PAGE STYLES (Appointment Booking.css)
+   ========================================================================== */
+
+@import url('common.css');
+
+.booking-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f8fbfe;
+}
+
+/* ==========================================================================
+   FORM CONTAINER
+   ========================================================================== */
+
+#content {
+    max-width: 920px;
+    width: calc(100% - 2.5rem);
+    margin: 3rem auto 5rem;
+    padding: 0;
+    flex: 1;
+}
+
+.booking-card-wrapper {
+    background: #ffffff;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: 3rem 3.5rem;
+    transition: var(--transition);
+}
+
+.booking-card-wrapper:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.form-header {
+    text-align: center;
+    border-bottom: 1.5px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.25rem;
+}
+
+.form-header h2 {
+    color: var(--primary-dark);
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+}
+
+.form-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.required-star {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+/* Form Grid */
+.details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1.75rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field.full-width {
+    grid-column: span 2;
+}
+
+.field label {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 1rem;
+    color: #64748b;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    height: 48px;
+    padding: 0.75rem 1rem 0.75rem 2.85rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--surface-alt);
+    font-size: 0.96rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+    outline: none;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: var(--secondary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+.input-wrapper select:disabled {
+    opacity: 0.65;
+    background-color: #f1f5f9;
+    cursor: not-allowed;
+}
+
+/* Form Footer & Button */
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.book {
+    width: 100%;
+    height: 54px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(4, 4, 147, 0.28);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(4, 4, 147, 0.38);
+    color: #ffffff;
+}
+
+.book:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.form-disclaimer {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    #content {
+        margin: 2rem auto 3.5rem;
+    }
+
+    .booking-card-wrapper {
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .field.full-width {
+        grid-column: span 1;
+    }
+
+    .book {
+        height: 50px;
+        font-size: 0.98rem;
+    }
+}

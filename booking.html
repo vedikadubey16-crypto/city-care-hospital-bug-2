@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment | City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="Appointment Booking.css">
+</head>
+
+<body class="booking-page">
+    <!-- Unified Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link">Departments</a>
+                <a href="booking.html" class="nav-link active">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <div id="navbar2" class="page-banner">
+        <b>BOOK YOUR MEDICAL CONSULTATION</b>
+        <span class="info">Fill in the patient details below to schedule an in-person appointment with our specialist physicians</span>
+    </div>
+
+    <!-- Main Booking Form Content -->
+    <main id="content">
+        <div class="booking-card-wrapper">
+            <div class="form-header">
+                <h2>Patient Appointment Form</h2>
+                <p>Fields marked with an asterisk (<span class="required-star">*</span>) are mandatory.</p>
+            </div>
+
+            <form class="details" id="appointmentForm" novalidate>
+                <!-- Full Name -->
+                <div class="field">
+                    <label for="name"><b>Full Name *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input
+                            type="text"
+                            placeholder="Enter patient full name"
+                            id="name"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Date Of Birth -->
+                <div class="field">
+                    <label for="dob"><b>Date Of Birth *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🎂</span>
+                        <input
+                            type="date"
+                            id="dob"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="field">
+                    <label for="phone"><b>Phone Number *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📞</span>
+                        <input
+                            type="tel"
+                            placeholder="e.g. 9876543210"
+                            id="phone"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="field">
+                    <label for="email"><b>Email Address *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">✉️</span>
+                        <input
+                            type="email"
+                            placeholder="patient@example.com"
+                            id="email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Department Dropdown -->
+                <div class="field full-width">
+                    <label for="dep"><b>Department *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🏥</span>
+                        <select id="dep" required>
+                            <option value="">Select your Department</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Dentistry">Dentistry</option>
+                            <option value="General Medicine">General Medicine</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Pulmonology">Pulmonology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Preferred Date -->
+                <div class="field">
+                    <label for="preferred_date"><b>Preferred Date *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📅</span>
+                        <input
+                            type="date"
+                            id="preferred_date"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Preferred Time -->
+                <div class="field">
+                    <label for="preferred_time"><b>Preferred Time (09:00 - 18:00) *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">⏰</span>
+                        <input
+                            type="time"
+                            id="preferred_time"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Reason for Visit Dropdown -->
+                <div class="field full-width">
+                    <label for="reason"><b>Reason for your visit *</b></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📋</span>
+                        <select id="reason" required disabled>
+                            <option value="">Select Department First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-footer full-width">
+                    <button type="submit" class="book" id="submitBtn">
+                        <b>CONFIRM APPOINTMENT BOOKING &rarr;</b>
+                    </button>
+                    <p class="form-disclaimer">
+                        By confirming this booking, you agree to receive appointment reminders and SMS/Email notifications from City Care Hospital.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Form Logic & Bug Integrations -->
+    <script>
+    const departmentFacilities = {
+        "Cardiology": [
+            "Heart Check-up",
+            "ECG",
+            "Echocardiography",
+            "Cardiac Consultation"
+        ],
+        "Dentistry": [
+            "Dental Check-up",
+            "Teeth Cleaning",
+            "Root Canal Treatment",
+            "Dental Restoration"
+        ],
+        "General Medicine": [
+            "General Health Check-up",
+            "Fever & Infection Care",
+            "Chronic Disease Management",
+            "Preventive Healthcare"
+        ],
+        "Pediatrics": [
+            "Child Health Check-up",
+            "Vaccination",
+            "Child Nutrition",
+            "Child Illness Treatment"
+        ],
+        "Pulmonology": [
+            "Respiratory Check-up",
+            "Asthma Care",
+            "Lung Infection Treatment",
+            "Breathing Disorder Care"
+        ],
+        "Orthopedics": [
+            "Bone & Joint Check-up",
+            "Fracture Treatment",
+            "Joint Pain Treatment",
+            "Sports Injury Care"
+        ]
+    };
+
+    const departmentSelect = document.getElementById("dep");
+    const reasonSelect = document.getElementById("reason");
+    const preferredDateInput = document.getElementById("preferred_date");
+    const form = document.getElementById("appointmentForm");
+    const submitButton = document.getElementById("submitBtn");
+
+    // Dynamic department reasons loader
+    departmentSelect.addEventListener("change", function() {
+        const selectedDepartment = departmentSelect.value;
+        reasonSelect.innerHTML = "";
+
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+
+        if (selectedDepartment === "Dentistry") {
+            defaultOption.textContent = "Select Cardiology Service First";
+        } else if (selectedDepartment) {
+            defaultOption.textContent = "Select your Reason for Visit";
+        } else {
+            defaultOption.textContent = "Select Department First";
+        }
+
+        reasonSelect.appendChild(defaultOption);
+
+        const facilities = departmentFacilities[selectedDepartment] || [];
+        reasonSelect.disabled = facilities.length === 0;
+
+        facilities.forEach(function(facility) {
+            const option = document.createElement("option");
+            option.value = facility;
+            option.textContent = facility;
+            reasonSelect.appendChild(option);
+        });
+    });
+
+    // Weekend clinic validation check
+    preferredDateInput.addEventListener("change", function() {
+        if (!preferredDateInput.value) return;
+        const selectedDate = new Date(preferredDateInput.value);
+        const selectedDay = selectedDate.getDay();
+
+        if (selectedDay === 6) {
+            alert("Hospital outpatient clinics are closed on Sundays. Please select a weekday or Saturday.");
+            preferredDateInput.value = "";
+        }
+    });
+
+    // Department pre-selection from URL
+    window.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const deptParam = urlParams.get("department") || urlParams.get("dept");
+        if (deptParam) {
+            departmentSelect.value = deptParam;
+            departmentSelect.dispatchEvent(new Event("change"));
+        }
+    });
+
+    // Submit handler
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const appointmentData = {
+            full_name: document.getElementById("name").value.trim(),
+            date_of_birth: document.getElementById("dob").value,
+            phone: document.getElementById("phone").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            department: departmentSelect.value,
+            preferred_date: preferredDateInput.value,
+            preferred_time: document.getElementById("preferred_time").value,
+            reason: reasonSelect.value
+        };
+
+        // Basic front-end verification
+        for (const [key, value] of Object.entries(appointmentData)) {
+            if (!value) {
+                alert("Please fill in all mandatory fields before submitting.");
+                return;
+            }
+        }
+
+        const validReasons = departmentFacilities[appointmentData.department] || [];
+        if (!validReasons.includes(appointmentData.reason)) {
+            alert("Please select a valid reason for the chosen department.");
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = "<b>PROCESSING BOOKING...</b>";
+
+        try {
+            const response = await fetch("/api/appointments", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(appointmentData)
+            });
+
+            const responseText = await response.text();
+            let result = {};
+
+            if (responseText.trim()) {
+                try {
+                    result = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error("Backend response parse error:", responseText);
+                    throw new Error("Invalid response format from hospital server.");
+                }
+            }
+
+            if (!response.ok) {
+                throw new Error(result.detail || "Booking failed with status " + response.status);
+            }
+
+            if (!result.appointment_id) {
+                throw new Error("No appointment confirmation ID returned by hospital server.");
+            }
+
+            // Convert time to 12-hour format for patient record
+            let [hours, minutes] = appointmentData.preferred_time.split(":");
+            hours = parseInt(hours, 10);
+            const period = hours > 12 ? "PM" : "AM";
+            const displayHours = hours % 12 || 12;
+            const formattedTime = `${String(displayHours).padStart(2, "0")}:${minutes} ${period}`;
+
+            let historySaved = false;
+            try {
+                localStorage.setItem(
+                    "myAppointment",
+                    JSON.stringify({
+                        ...appointmentData,
+                        preferred_time: formattedTime,
+                        id: result.appointment_id
+                    })
+                );
+                historySaved = true;
+            } catch (storageError) {
+                console.error("Local storage error:", storageError);
+            }
+
+            alert(
+                "Appointment booked successfully!\n" +
+                "Your Confirmed Appointment ID is: #" + result.appointment_id
+            );
+
+            if (historySaved) {
+                window.location.href = "appointments.html";
+            } else {
+                form.reset();
+                reasonSelect.innerHTML = '<option value="">Select Department First</option>';
+                reasonSelect.disabled = true;
+            }
+
+        } catch (error) {
+            console.error("Booking error:", error);
+            alert("Booking Notice: " + error.message);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = "<b>CONFIRM APPOINTMENT BOOKING &rarr;</b>";
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmonology - City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="department.css">
+    <style>
+        .dept-hero {
+            background: linear-gradient(135deg, #03034a 0%, #040493 50%, #0284c7 100%);
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .dept-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        .dept-hero-text h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .dept-hero-text p.tagline {
+            color: #93c5fd;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .dept-hero-text p.desc {
+            color: #e0f2fe;
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .dept-hero-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+        }
+        .dept-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.75rem;
+            margin-bottom: 4rem;
+        }
+        .service-detail-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .service-detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .service-detail-card .srv-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .service-detail-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .service-detail-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            gap: 2rem;
+        }
+        .doc-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .doc-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-cyan);
+        }
+        .doc-card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            margin-bottom: 1.25rem;
+        }
+        .doc-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-spec {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        .doc-card .doc-exp {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 1.25rem;
+        }
+        .doc-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(4, 4, 147, 0.25);
+            color: #ffffff;
+        }
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            background: var(--surface-alt);
+            color: var(--secondary);
+        }
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            line-height: 1.6;
+            border-top: 1px solid var(--border-color);
+            display: none;
+            background: var(--surface-alt);
+        }
+        .dept-cta-banner {
+            background: linear-gradient(135deg, #03034a 0%, #040493 100%);
+            color: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .dept-cta-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .dept-cta-text p {
+            color: #bfdbfe;
+            font-size: 1rem;
+        }
+        @media (max-width: 992px) {
+            .services-detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .dept-hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .services-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            .dept-cta-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link active">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <section class="dept-hero">
+        <div class="dept-hero-inner">
+            <div class="dept-hero-text">
+                <h1>PULMONOLOGY</h1>
+                <p class="tagline">Advanced Respiratory Medicine, Asthma Management & Lung Health</p>
+                <p class="desc">The Pulmonology Department at City Care Hospital is equipped with advanced pulmonary function laboratories, bronchoscopy suites, and sleep medicine units for thorough respiratory care.</p>
+            </div>
+            <img src="pulmunology.png" alt="Pulmonology" class="dept-hero-img">
+        </div>
+    </section>
+
+    <main class="dept-section">
+        <div class="section-header">
+            <span class="section-tag">RESPIRATORY SERVICES</span>
+            <h2>Our Pulmonology Services</h2>
+            <p>Targeted medical diagnostic and treatment options for clear, easy breathing</p>
+        </div>
+
+        <div class="services-detail-grid">
+            <div class="service-detail-card">
+                <span class="srv-icon">🫁</span>
+                <h3>Respiratory Check-up</h3>
+                <p>Comprehensive spirometry, diffusion capacity testing (DLCO), and pulmonary functional assessment.</p>
+            </div>
+            <div class="service-detail-card">
+                <span class="srv-icon">💨</span>
+                <h3>Asthma Care</h3>
+                <p>Personalized asthma action plans, allergy triggers identification, and modern inhaler therapy optimization.</p>
+            </div>
+            <div class="service-detail-card">
+                <span class="srv-icon">🔬</span>
+                <h3>Lung Infection Treatment</h3>
+                <p>Targeted care for bacterial pneumonia, post-viral bronchitis, pleurisy, and persistent chronic cough.</p>
+            </div>
+            <div class="service-detail-card">
+                <span class="srv-icon">💤</span>
+                <h3>Breathing Disorder Care</h3>
+                <p>Diagnostic sleep polysomnography, CPAP titration, COPD management, and pulmonary rehabilitation.</p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">PULMONOLOGISTS</span>
+            <h2>Our Pulmonology Specialists</h2>
+            <p>Experienced chest physicians dedicated to respiratory recovery and wellness</p>
+        </div>
+
+        <div class="doctors-grid">
+            <div class="doc-card">
+                <img src="doctorpu1.jpg" alt="Dr. Suresh Kumar">
+                <h3>Dr. Suresh Kumar</h3>
+                <p class="doc-spec">Senior Pulmonologist & Chest Physician</p>
+                <p class="doc-exp">MD (Pulmonary Medicine), FCCP • 15+ Years Experience</p>
+                <a href="booking.html?department=Pulmonology" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+            <div class="doc-card">
+                <img src="doctorpu2.jpg" alt="Dr. Priya Sen">
+                <h3>Dr. Priya Sen</h3>
+                <p class="doc-spec">Respiratory & Critical Care Consultant</p>
+                <p class="doc-exp">DNB (Respiratory Diseases), FAPSR • 12+ Years Experience</p>
+                <a href="booking.html?department=Pulmonology" class="doc-btn">Book Appointment &rarr;</a>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-tag">PATIENT FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Helpful advice on pulmonary health and diagnostic tests</p>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is a Spirometry lung function test?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Spirometry is a non-invasive breathing test that measures how much air you can breathe in and out, as well as how quickly you can blow the air out. It is used to diagnose asthma, COPD, and other lung conditions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>When should I see a pulmonologist for a chronic cough?</span>
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    If your cough lasts longer than 3 weeks, causes shortness of breath, wheezing, or chest tightness, you should consult our pulmonology specialists for a clinical evaluation.
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-cta-banner">
+            <div class="dept-cta-text">
+                <h3>Breathe Easier with Expert Lung Care</h3>
+                <p>Book a consultation with our experienced chest specialists today.</p>
+            </div>
+            <a href="booking.html?department=Pulmonology" class="btn btn-primary btn-pill" style="background: #ffffff; color: var(--primary);">
+                Book Pulmonology Appointment &rarr;
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const arrow = element.querySelector("span:last-child");
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            if (arrow) arrow.textContent = "▼";
+        } else {
+            answer.style.display = "block";
+            if (arrow) arrow.textContent = "▲";
+        }
+    }
+    </script>
+</body>
+</html>

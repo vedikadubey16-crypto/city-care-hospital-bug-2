@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments & Medical Services | City Care Hospital</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="department.css">
+</head>
+<body class="departments-page">
+    <!-- Unified Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="main.html" class="logo-container">
+                <span class="logo"><span class="badge-symbol">♥︎ 🩺 ♥︎</span> CITY CARE HOSPITAL</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="main.html" class="nav-link">Home</a>
+                <a href="department.html" class="nav-link active">Departments</a>
+                <a href="booking.html" class="nav-link">Book Appointment</a>
+                <a href="appointments.html" class="nav-link">My Bookings</a>
+            </nav>
+            <a href="tel:123456789" class="emergency-button">
+                Emergency? Call ☎ 123-456-789
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <div id="navbar2" class="page-banner">
+        <b>OUR CLINICAL DEPARTMENTS & SERVICES</b>
+        <span class="info">Specialized tertiary healthcare and diagnostic excellence provided by dedicated multidisciplinary teams</span>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <section class="filter-section">
+        <div class="search-box-wrapper">
+            <div class="search-input-group">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="departmentSearch" 
+                    placeholder="Search by department, specialty, or health symptom..." 
+                    aria-label="Search departments"
+                >
+            </div>
+            <div class="quick-tags" id="quickTags">
+                <span class="tag-label">Common searches:</span>
+                <button type="button" class="filter-pill active" data-filter="">All Departments</button>
+                <button type="button" class="filter-pill" data-filter="heart">Heart</button>
+                <button type="button" class="filter-pill" data-filter="teeth">Teeth</button>
+                <button type="button" class="filter-pill" data-filter="bone">Bones & Joints</button>
+                <button type="button" class="filter-pill" data-filter="child">Pediatrics</button>
+                <button type="button" class="filter-pill" data-filter="lung">Lungs & Breathing</button>
+            </div>
+        </div>
+        <p id="noResultsMsg" class="no-results" style="display: none;">
+            No departments found matching your search. Please try another keyword or select "All Departments".
+        </p>
+    </section>
+
+    <!-- 6 Department Cards in a Modern Responsive Grid -->
+    <main class="dep-container" id="departmentsContainer">
+        <!-- Cardiology -->
+        <div class="dep-card" id="cardiology" data-tags="heart ecg cardio chest echo blood pressure">
+            <div class="card-badge">Cardiovascular Center</div>
+            <img src="cardiology.png" id="cardioimage" alt="Cardiology">
+            <h3 id="headingdep" class="headingdep">CARDIOLOGY</h3>
+            <p id="motodep" class="motodep">Comprehensive heart care, advanced non-invasive diagnostics, ECG, echocardiography, and specialist cardiac consultation.</p>
+            <div class="service-pills">
+                <span>Heart Check-up</span>
+                <span>ECG</span>
+                <span>Echocardiography</span>
+            </div>
+            <a href="cardiology.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+
+        <!-- Dentistry -->
+        <div class="dep-card" id="dentistry" data-tags="teeth dental oral tooth root canal gums cleaning">
+            <div class="card-badge">Oral Health Care</div>
+            <img src="dentistry.png" id="dentistryimage" alt="Dentistry">
+            <h3 id="headingdep" class="headingdep">DENTISTRY</h3>
+            <p id="motodep" class="motodep">Complete oral healthcare, restorative dentistry, teeth cleaning, painless root canal therapy, and cosmetic smile enhancement.</p>
+            <div class="service-pills">
+                <span>Teeth Cleaning</span>
+                <span>Root Canal</span>
+                <span>Restoration</span>
+            </div>
+            <a href="dentisitry.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+
+        <!-- General Medicine -->
+        <div class="dep-card" id="medicine" data-tags="general health fever infection diabetes primary physician medicine check-up">
+            <div class="card-badge">Primary Care</div>
+            <img src="medicine.png" id="medicineimage" alt="General Medicine">
+            <h3 id="headingdep" class="headingdep">GENERAL MEDICINE</h3>
+            <p id="motodep" class="motodep">Primary healthcare services, comprehensive executive health check-ups, chronic illness management, and preventative health.</p>
+            <div class="service-pills">
+                <span>Health Check-up</span>
+                <span>Fever Care</span>
+                <span>Infection Care</span>
+            </div>
+            <a href="general medicine.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+
+        <!-- Pediatrics -->
+        <div class="dep-card" id="pediatrics" data-tags="child baby infant nutrition vaccination kids newborn growth">
+            <div class="card-badge">Child Health Unit</div>
+            <img src="pediatrics.png" id="pediatricsimage" alt="Pediatrics">
+            <h3 id="headingdep" class="headingdep">PEDIATRICS</h3>
+            <p id="motodep" class="motodep">Compassionate pediatric care for infants, children, and adolescents with complete immunizations and growth tracking.</p>
+            <div class="service-pills">
+                <span>Vaccination</span>
+                <span>Child Nutrition</span>
+                <span>Illness Care</span>
+            </div>
+            <a href="pediatrics.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+
+        <!-- Orthopedics -->
+        <div class="dep-card" id="orthopedics" data-tags="bone joint fracture sports injury spine knee arthritis movement">
+            <div class="card-badge">Orthopedic & Trauma</div>
+            <img src="orthopedics.png" id="orthopedicsimage" alt="Orthopedics">
+            <h3 id="headingdep" class="headingdep">ORTHOPEDICS</h3>
+            <p id="motodep" class="motodep">Specialized bone, spine, and joint care, fracture treatment, joint replacement, and sports injury rehabilitation.</p>
+            <div class="service-pills">
+                <span>Joint Care</span>
+                <span>Fracture Care</span>
+                <span>Sports Injury</span>
+            </div>
+            <a href="orthopedic.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+
+        <!-- Pulmonology -->
+        <div class="dep-card" id="pulmunology" data-tags="lung breathing respiratory asthma cough chest pulmonary wellness">
+            <div class="card-badge">Pulmonary Medicine</div>
+            <img src="pulmunology.png" id="pulmunologyimage" alt="Pulmonology">
+            <h3 id="headingdep" class="headingdep">PULMONOLOGY</h3>
+            <p id="motodep" class="motodep">Advanced respiratory care, chronic asthma therapy, lung infection recovery, and pulmonary rehabilitation.</p>
+            <div class="service-pills">
+                <span>Asthma Care</span>
+                <span>Lung Treatment</span>
+                <span>Respiratory Care</span>
+            </div>
+            <a href="pediatrics.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+        </div>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer>
+        <div class="last">
+            <div class="footertop">
+                <div class="slogan">
+                    <a href="main.html" class="end">
+                        <span class="endlogo">✚ CITY CARE HOSPITAL</span>
+                    </a>
+                    <span class="eend">Better health, brighter future</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="main.html" class="end">Home</a>
+                    <a href="department.html" class="end">Departments</a>
+                    <a href="booking.html" class="end">Book Appointment</a>
+                    <a href="appointments.html" class="end">My Bookings</a>
+                    <a href="tel:123456789" class="end footer-emergency">Emergency? Call ☎: 123-456-789</a>
+                </nav>
+            </div>
+            <div class="copyright">© 2026 City Care Hospital. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Search & Filter Logic -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById("departmentSearch");
+        const cards = document.querySelectorAll(".dep-card");
+        const noResultsMsg = document.getElementById("noResultsMsg");
+        const filterPills = document.querySelectorAll(".filter-pill");
+
+        function filterDepartments() {
+            const query = searchInput.value;
+            let visibleCount = 0;
+
+            cards.forEach(function(card) {
+                const cardContent = card.textContent.toLowerCase() + " " + (card.getAttribute("data-tags") || "");
+                if (query === "" || cardContent.includes(query)) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResultsMsg.style.display = "block";
+            } else {
+                noResultsMsg.style.display = "none";
+            }
+        }
+
+        searchInput.addEventListener("input", function() {
+            filterPills.forEach(p => p.classList.remove("active"));
+            filterDepartments();
+        });
+
+        filterPills.forEach(function(pill) {
+            pill.addEventListener("click", function() {
+                filterPills.forEach(p => p.classList.remove("active"));
+                pill.classList.add("active");
+                searchInput.value = pill.getAttribute("data-filter") || "";
+                filterDepartments();
+            });
+        });
+    });
+    </script>
+</body>
+</html>
