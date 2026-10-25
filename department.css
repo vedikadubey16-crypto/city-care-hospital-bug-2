@@ -11,6 +11,86 @@
     background: #f8fbfe;
 }
 
+/* View Facilities button */
+.facilities-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px 18px;
+
+    background: linear-gradient(135deg, #040493, #167ac6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(4, 4, 147, 0.16);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+}
+
+.facilities-btn:hover {
+    background: linear-gradient(135deg, #03034a, #040493);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(4, 4, 147, 0.25);
+}
+
+.facilities-btn:active {
+    transform: translateY(0);
+}
+
+/* Facilities display */
+.facilities-result {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #03034a;
+}
+
+.facilities-result:empty {
+    display: none;
+}
+
+.facilities-result ul {
+    list-style: none;
+    padding: 12px;
+    margin: 0;
+    border-radius: 10px;
+    background: #eef8ff;
+    border: 1px solid #b9e3fa;
+}
+
+.facilities-result li {
+    padding: 7px 4px;
+    border-bottom: 1px solid #d6eaf7;
+}
+
+.facilities-result li:last-child {
+    border-bottom: none;
+}
+
+.facilities-result li::before {
+    content: "✓";
+    color: #040493;
+    font-weight: bold;
+    margin-right: 9px;
+}
+
+.facilities-error {
+    padding: 12px;
+    background: #fff2f2;
+    border-left: 3px solid #d84b4b;
+    border-radius: 8px;
+    color: #a12b2b;
+}
+
+
 /* ==========================================================================
    SEARCH & FILTER SECTION
    ========================================================================== */

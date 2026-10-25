@@ -11,6 +11,21 @@
     background: #f8fbfe;
 }
 
+.booking-notice {
+    background-color: #eef7ff;
+    border-left: 4px solid #040493;
+    padding: 12px 16px;
+    margin: 15px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #03034a;
+}
+
+.booking-notice p {
+    margin: 6px 0 0;
+    line-height: 1.6;
+}
+
 /* ==========================================================================
    FORM CONTAINER
    ========================================================================== */

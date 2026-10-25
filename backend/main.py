@@ -7,6 +7,7 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 from pathlib import Path
 from datetime import date
+from datetime import datetime, timedelta
 import os
 
 app = FastAPI(
@@ -98,7 +99,7 @@ department_facilities = {
         "Dental Restoration"
     ],
     "General Medicine": [
-        "General Helath Check-up",
+        "General Health Check-up",
         "Fever & Infection Care",
         "Chronic Disease Management",
         "Preventive Healthcare"
@@ -158,11 +159,11 @@ def book_appointment(appointment: Appointment):
         )
 
     allowed_reasons = department_facilities[appointment.department]
-    if appointment.reason not in allowed_reasons and appointment.reason != "General Health Check-up":
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid reason for selected department"
-        )
+    if appointment.reason not in allowed_reasons:
+       raise HTTPException(
+        status_code=400,
+        detail="Invalid reason for selected department"
+    )
 
     if appointment.preferred_date <= date.today():
         raise HTTPException(
@@ -180,24 +181,22 @@ def book_appointment(appointment: Appointment):
         today = date.today()
         dob = appointment.date_of_birth
         age = today.year - dob.year
-        if age >= 18:
+        if age >= 10:
             raise HTTPException(
                 status_code=400,
                 detail="Pediatrics care is reserved for patients aged 18 and below"
             )
 
     try:
-        time_parts = [int(p) for p in appointment.preferred_time.split(":")]
-        hour = time_parts[0]
-        minute = time_parts[1] if len(time_parts) > 1 else 0
-        if hour < 9 or hour > 17 and minute > 0:
-            raise HTTPException(
-                status_code=400,
-                detail="Appointments can only be scheduled between 09:00 and 18:00"
-            )
-    except (ValueError, IndexError):
-        raise HTTPException(status_code=400, detail="Invalid time format")
-
+        appointment_time = datetime.strptime(
+            appointment.preferred_time, "%H:%M"
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid time format"
+        )
+        
     db = SessionLocal()
     try:
         existing_slot = db.query(AppointmentDB).filter(
@@ -243,14 +242,21 @@ def book_appointment(appointment: Appointment):
     finally:
         db.close()
 
+
 @app.get("/api/appointments")
 def get_appointments(department: str = None):
     db = SessionLocal()
     try:
         query = db.query(AppointmentDB)
+
         if department:
-            query = query.filter(AppointmentDB.department == department)
-        appointments = query.order_by(AppointmentDB.id.desc()).all()
+            query = query.filter(
+                AppointmentDB.department == department
+            )
+
+        appointments = query.order_by(
+            AppointmentDB.id.desc()
+        ).all()
 
         return [
             {
@@ -260,33 +266,19 @@ def get_appointments(department: str = None):
                 "phone": a.phone,
                 "email": a.email,
                 "department": a.department,
-                "preferred_date": a.preferred_date,
+
+                # BUG-05: Appointment Date Serialization Bug
+                "preferred_date": (
+                    datetime.strptime(
+                        a.preferred_date, "%Y-%m-%d"
+                    ) - timedelta(days=1)
+                ).strftime("%Y-%m-%d"),
+
                 "preferred_time": a.preferred_time,
                 "reason": a.reason
             }
             for a in appointments
         ]
-    finally:
-        db.close()
-
-@app.get("/api/appointments/{appointment_id}")
-def get_appointment(appointment_id: int):
-    db = SessionLocal()
-    try:
-        apt = db.query(AppointmentDB).filter(AppointmentDB.id == appointment_id).first()
-        if not apt:
-            raise HTTPException(status_code=404, detail="Appointment not found")
-        return {
-            "id": apt.id,
-            "full_name": apt.full_name,
-            "date_of_birth": apt.date_of_birth,
-            "phone": apt.phone,
-            "email": apt.email,
-            "department": apt.department,
-            "preferred_date": apt.preferred_date,
-            "preferred_time": apt.preferred_time,
-            "reason": apt.reason
-        }
     finally:
         db.close()
 

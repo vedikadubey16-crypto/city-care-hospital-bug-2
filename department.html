@@ -73,6 +73,11 @@
                 <span>Echocardiography</span>
             </div>
             <a href="cardiology.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+            <button type="button" class="facilities-btn"
+        onclick="viewFacilities('Cardiology', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button>
+<div class="facilities-result"></div>
         </div>
 
         <!-- Dentistry -->
@@ -87,21 +92,51 @@
                 <span>Restoration</span>
             </div>
             <a href="dentisitry.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
+            <button type="button" class="facilities-btn"
+        onclick="viewFacilities('Dentistry', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button>
+<div class="facilities-result"></div>
+
         </div>
 
         <!-- General Medicine -->
-        <div class="dep-card" id="medicine" data-tags="general health fever infection diabetes primary physician medicine check-up">
-            <div class="card-badge">Primary Care</div>
-            <img src="medicine.png" id="medicineimage" alt="General Medicine">
-            <h3 id="headingdep" class="headingdep">GENERAL MEDICINE</h3>
-            <p id="motodep" class="motodep">Primary healthcare services, comprehensive executive health check-ups, chronic illness management, and preventative health.</p>
-            <div class="service-pills">
-                <span>Health Check-up</span>
-                <span>Fever Care</span>
-                <span>Infection Care</span>
-            </div>
-            <a href="general medicine.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
-        </div>
+        
+<div class="dep-card" id="medicine" data-tags="general health fever infection diabetes primary physician medicine check-up">
+
+    <div class="card-badge">Primary Care</div>
+
+    <img src="medicine.png" id="medicineimage" alt="General Medicine">
+
+    <h3 id="headingdep" class="headingdep">GENERAL MEDICINE</h3>
+
+    <p id="motodep" class="motodep">
+        Primary healthcare services, comprehensive executive health check-ups,
+        chronic illness management, and preventative health.
+    </p>
+
+    <div class="service-pills">
+        <span>Health Check-up</span>
+        <span>Fever Care</span>
+        <span>Infection Care</span>
+    </div>
+
+    <a href="general medicine.html" id="linkdep" class="linkdep">
+        <h3>Learn More &rarr;</h3>
+    </a>
+
+    <button type="button" class="facilities-btn"
+        onclick="viewFacilities('General Medicine', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button>
+<div class="facilities-result"></div>
+
+
+    <!-- Facilities will appear here -->
+    <div id="facilities-General-Medicine"></div>
+
+</div>
+
 
         <!-- Pediatrics -->
         <div class="dep-card" id="pediatrics" data-tags="child baby infant nutrition vaccination kids newborn growth">
@@ -115,7 +150,10 @@
                 <span>Illness Care</span>
             </div>
             <a href="pediatrics.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
-        </div>
+        <button type="button" class="facilities-btn"
+        onclick="viewFacilities('Pediatrics', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button><div class="facilities-result"></div></div>
 
         <!-- Orthopedics -->
         <div class="dep-card" id="orthopedics" data-tags="bone joint fracture sports injury spine knee arthritis movement">
@@ -129,7 +167,10 @@
                 <span>Sports Injury</span>
             </div>
             <a href="orthopedic.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
-        </div>
+        <button type="button" class="facilities-btn"
+        onclick="viewFacilities('Orthopedics', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button><div class="facilities-result"></div></div>
 
         <!-- Pulmonology -->
         <div class="dep-card" id="pulmunology" data-tags="lung breathing respiratory asthma cough chest pulmonary wellness">
@@ -143,7 +184,10 @@
                 <span>Respiratory Care</span>
             </div>
             <a href="pediatrics.html" id="linkdep" class="linkdep"><h3>Learn More &rarr;</h3></a>
-        </div>
+        <button type="button" class="facilities-btn"
+        onclick="viewFacilities('Pulmonology', this)">
+    <span>✚</span> View Facilities <span>→</span>
+</button><div class="facilities-result"></div></div>
     </main>
 
     <!-- Unified Footer -->
@@ -212,5 +256,45 @@
         });
     });
     </script>
+
+<script>
+async function viewFacilities(department, button) {
+    const resultBox = button.nextElementSibling;
+
+    if (!resultBox) return;
+    resultBox.textContent = "Loading facilities...";
+
+    try {
+        const response = await fetch(
+            "/api/departments/" + encodeURIComponent(department)
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || "Unable to load department facilities"
+            );
+        }
+
+        resultBox.innerHTML = "";
+
+        const list = document.createElement("ul");
+
+        data.facilities.forEach(function(facility) {
+            const item = document.createElement("li");
+            item.textContent = facility;
+            list.appendChild(item);
+        });
+
+        resultBox.appendChild(list);
+
+    } catch (error) {
+        resultBox.textContent =
+            "Unable to load facilities. Please try again.";
+    }
+}
+</script>
+
 </body>
 </html>

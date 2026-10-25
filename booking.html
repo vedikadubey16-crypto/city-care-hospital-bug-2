@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +112,10 @@
                             <option value="Pulmonology">Pulmonology</option>
                             <option value="Orthopedics">Orthopedics</option>
                         </select>
+                        <p id="pediatricsNote"
+   style="display: none; color: #040493; font-size: 14px; margin-top: 8px;">
+    Note: Pediatrics appointments are available for patients aged 10 years or below.
+</p>
                     </div>
                 </div>
 
@@ -124,6 +129,9 @@
                             id="preferred_date"
                             required
                         >
+                        <p style="color: #040493; font-size: 14px; margin-top: 8px;">
+    Note: Same-day appointments are available for upcoming time slots.
+</p>
                     </div>
                 </div>
 
@@ -155,6 +163,15 @@
                     <button type="submit" class="book" id="submitBtn">
                         <b>CONFIRM APPOINTMENT BOOKING &rarr;</b>
                     </button>
+                    <div class="booking-notice">
+    <strong>Appointment Booking Notice</strong>
+    <p>
+        Each department has limited appointment slots.
+        Only one patient can be assigned to a particular
+        date and time in the same department.
+        Please choose an available slot when booking.
+    </p>
+</div>
                     <p class="form-disclaimer">
                         By confirming this booking, you agree to receive appointment reminders and SMS/Email notifications from City Care Hospital.
                     </p>
@@ -235,6 +252,10 @@
     // Dynamic department reasons loader
     departmentSelect.addEventListener("change", function() {
         const selectedDepartment = departmentSelect.value;
+        const pediatricsNote = document.getElementById("pediatricsNote");
+
+        pediatricsNote.style.display =
+         selectedDepartment === "Pediatrics" ? "block" : "none";
         reasonSelect.innerHTML = "";
 
         const defaultOption = document.createElement("option");
@@ -261,27 +282,23 @@
         });
     });
 
-    // Weekend clinic validation check
-    preferredDateInput.addEventListener("change", function() {
-        if (!preferredDateInput.value) return;
-        const selectedDate = new Date(preferredDateInput.value);
-        const selectedDay = selectedDate.getDay();
+    
+    window.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const deptParam = urlParams.get("department") || urlParams.get("dept");
 
-        if (selectedDay === 6) {
-            alert("Hospital outpatient clinics are closed on Sundays. Please select a weekday or Saturday.");
-            preferredDateInput.value = "";
-        }
-    });
+    if (deptParam) {
+        const matchingOption = Array.from(departmentSelect.options)
+            .find(option =>
+                option.value.trim().toLowerCase() === deptParam.trim().toLowerCase()
+            );
 
-    // Department pre-selection from URL
-    window.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const deptParam = urlParams.get("department") || urlParams.get("dept");
-        if (deptParam) {
-            departmentSelect.value = deptParam;
+        if (matchingOption) {
+            departmentSelect.value = matchingOption.value;
             departmentSelect.dispatchEvent(new Event("change"));
         }
-    });
+    }
+});
 
     // Submit handler
     form.addEventListener("submit", async function(event) {
@@ -297,6 +314,8 @@
             preferred_time: document.getElementById("preferred_time").value,
             reason: reasonSelect.value
         };
+
+        
 
         // Basic front-end verification
         for (const [key, value] of Object.entries(appointmentData)) {
@@ -347,7 +366,7 @@
             // Convert time to 12-hour format for patient record
             let [hours, minutes] = appointmentData.preferred_time.split(":");
             hours = parseInt(hours, 10);
-            const period = hours > 12 ? "PM" : "AM";
+            const period = hours >= 21 ? "PM" : "AM";
             const displayHours = hours % 12 || 12;
             const formattedTime = `${String(displayHours).padStart(2, "0")}:${minutes} ${period}`;
 
